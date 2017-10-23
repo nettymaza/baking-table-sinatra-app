@@ -6,4 +6,7 @@ end
 
 use Rack::MethodOverride
 
+use BakersController
+use CategoriesController
+use RecipesController
 run ApplicationController
