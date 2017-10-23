@@ -1,7 +1,6 @@
 require 'pry'
 
 class BakersController < ApplicationController
-  enable :sessions
 
   #SignUp
   get "/signup" do
