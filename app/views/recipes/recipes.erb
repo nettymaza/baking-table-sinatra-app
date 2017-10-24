@@ -1,8 +1,18 @@
 <h2>All Recipes!</h2>
 
-<!-- You will be able to view all by all bakers -->
+<ul>
+  <% @recipes.each do |recipe| %>
 
+    <li>
+      <a href="/recipes/<%= recipe.id %>">
+        <%= recipe.name %>
+      </a>
+    </li>
+  <% end %>
+</ul>
+
+<!-- You will be able to view all by all bakers -->
 
 <p><h3><a href="/bakers/show_dashboard">View Your Recipes</a></h3></p>
 
-<!-- <h4>Log Out Link to clear session</h4> -->
+<h4><a href="/logout">Sign Out</a></h4>

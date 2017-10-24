@@ -1,0 +1,24 @@
+<h2>Create Your Recipe:</h2>
+
+<form action="/recipes" method="POST">
+  <p><label>Name:</label></p>
+  <p><input type="text" name="name"></p>
+  <br>
+  <p><label>Ingredients:</label></p>
+  <p><input type="text" name="ingredients"></p>
+  <br>
+  <p><label>Instructions:</label></p>
+  <p><input type="text" name="instructions" ></p>
+  <br>
+  <p><label>Choose Category:</label></p>
+  <select name="">
+    <% @categories.each do |category| %>
+      <option value="<%= category.id %>"><%= category.name %></option>
+    <% end %>
+  </select>
+  <br>
+  <br>
+  <br>
+  <p><input type="submit" value="Create Recipe"></p>
+
+</form>

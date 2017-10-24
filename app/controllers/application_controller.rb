@@ -18,9 +18,10 @@ class ApplicationController < Sinatra::Base
       !!session[:baker_id]
     end
 
-    def current_user
+    def current_baker
       Baker.find(session[:baker_id])
     end
   end
+
 
 end
