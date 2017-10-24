@@ -4,10 +4,10 @@ class BakersController < ApplicationController
 
   #SignUp
   get "/signup" do
-    if logged_in?
-      redirect "/recipes"
+    if !logged_in?
+      erb :"/bakers/create_baker"
     else
-    erb :"/bakers/create_baker"
+      redirect "/bakers/show_dashboard"
     end
   end
 
@@ -15,16 +15,16 @@ class BakersController < ApplicationController
     if params[:username] == "" || params[:email] == "" || params[:password] == ""
       redirect '/signup'
     else
-      @baker = Baker.create(username: params['username'], email: params['email'], password: params[:password])
-      session[:baker_id] = @baker.id
-      redirect "/recipes"
+    @baker = Baker.create(username: params[:username], email: params[:email], password: params[:password])
+    session[:baker_id] = @baker.id
+    redirect "/bakers/show_dashboard"
     end
   end
 
   #LogIn
   get "/login" do
     if logged_in?
-      redirect "/recipes"
+      redirect "/bakers/show_dashboard"
     else
       erb :"/bakers/login_baker"
     end
@@ -34,7 +34,7 @@ class BakersController < ApplicationController
     baker = Baker.find_by(username: params[:username])
     if baker && baker.authenticate(params[:password])
       session[:baker_id] = baker.id
-      redirect "/recipes"
+      redirect "/bakers/show_dashboard"
     else
       redirect "/signup"
     end
