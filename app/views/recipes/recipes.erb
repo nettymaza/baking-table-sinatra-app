@@ -1,8 +1,7 @@
 <h2>All Recipes!</h2>
-
+<!-- You will be able to view all by all bakers -->
 <ul>
   <% @recipes.each do |recipe| %>
-
     <li>
       <a href="/recipes/<%= recipe.id %>">
         <%= recipe.name %>
@@ -10,9 +9,18 @@
     </li>
   <% end %>
 </ul>
+<br>
 
-<!-- You will be able to view all by all bakers -->
+<!-- Links for dashboard, by category, logout -->
 
-<p><h3><a href="/bakers/show_dashboard">View Your Recipes</a></h3></p>
-
-<h4><a href="/logout">Sign Out</a></h4>
+<form method="get" action="/bakers/show_dashboard">
+    <button type="submit">View Your Recipes</button>
+</form>
+<br>
+<form method="get" action="/categories/index">
+    <button type="submit">View by Category</button>
+</form>
+<br>
+<form method="get" action="/logout">
+    <button type="submit">Log Out</button>
+</form>

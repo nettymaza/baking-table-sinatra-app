@@ -12,6 +12,7 @@ gem 'pry'
 gem 'bcrypt'
 gem "tux"
 gem 'awesome_print'
+gem 'rack-flash3'
 
 group :test do
   gem 'rspec'
