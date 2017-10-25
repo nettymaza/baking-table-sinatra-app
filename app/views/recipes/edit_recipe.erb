@@ -1,0 +1,22 @@
+<h2>Update Recipe:</h2>
+
+<form action="/recipes/<%= @recipe.id %>" method="POST">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <p>
+
+    <p><label>Name:</label></p>
+    <p><input type="text" name="name" value="<%= @recipe.name %>"></p>
+    <br>
+    <p><label>Ingredients:</label></p>
+    <p><input type="text" name="ingredients" value="<%= @recipe.ingredients %>"></p>
+    <br>
+    <p><label>Instructions:</label></p>
+    <p><input type="text" name="instructions" value="<%= @recipe.instructions %>" ></p>
+    <br>
+
+    <input type="submit" value="Save">
+  </p>
+
+</form>
+
+<!-- #Still need to be able to edit Category. -->
