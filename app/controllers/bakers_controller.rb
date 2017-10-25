@@ -15,9 +15,9 @@ class BakersController < ApplicationController
     if params[:username] == "" || params[:email] == "" || params[:password] == ""
       redirect '/signup'
     else
-    @baker = Baker.create(username: params[:username], email: params[:email], password: params[:password])
-    session[:baker_id] = @baker.id
-    redirect "/bakers/show_dashboard"
+      @baker = Baker.create(username: params[:username], email: params[:email], password: params[:password])
+      session[:baker_id] = @baker.id
+      redirect "/bakers/show_dashboard"
     end
   end
 
@@ -40,6 +40,12 @@ class BakersController < ApplicationController
     end
   end
 
+  #ShowDashboard
+  get "/bakers/:id" do
+    @baker = Baker.find_by_id(params[:id])
+    erb :"/bakers/show_dashboard"
+  end
+
   #LogOut
   get '/logout' do
     if logged_in?
@@ -49,11 +55,4 @@ class BakersController < ApplicationController
       redirect to '/'
     end
   end
-
-  #ShowDashboard
-  get "/bakers/:id" do
-    @baker = Baker.find_by_id(params[:id])
-    erb :"/bakers/show_dashboard"
-  end
-
 end

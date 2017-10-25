@@ -1,10 +1,29 @@
-<h2>Your Recipes:</h2>
+<p><h2>Baking Table</h2></p>
 
-<!-- Will show a linked list of baker's recipes. User will be able to click on link and edit or delete recipe. -->
+<p><h3>Welcome @<%= current_baker.username %>!</h3></p>
+<p><h3>Your Recipes:</h3></p>
 
+<ul>
+  <% current_baker.recipes.each do |recipe| %>
+    <li>
+      <a href="/recipes/<%= recipe.id %>">
+        <%= recipe.name %>
+      </a>
+    </li>
+  <% end %>
+</ul>
 
-<p><h3><a href="/recipes/new">Create New Recipe</a></h3></p>
+<br>
+<br>
 
-<p><h3><a href="/recipes">Explore Recipes</a></h3></p>
-
-<p><h4><a href="/logout">Log Out</a></h4></p>
+<form method="get" action="/recipes/new">
+    <button type="submit">Create New Recipe</button>
+</form>
+<br>
+<form method="get" action="/recipes">
+    <button type="submit">Explore Recipes</button>
+</form>
+<br>
+<form method="get" action="/logout">
+    <button type="submit">Log Out</button>
+</form>
