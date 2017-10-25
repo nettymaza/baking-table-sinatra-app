@@ -16,9 +16,15 @@
 </head>
 <body>
   <div class="wrapper">
-
+    <h1>Baking Table</h1>
 
       <%= yield %>
+
+      <br>
+
+      <% if logged_in? %>
+        <i><h4>Logged in as @<%= current_baker.username %>!</h4></i>
+      <% end %>
 
     <footer class="branding">
       <small>&copy; 2017 <strong>BakingTable</strong></small>

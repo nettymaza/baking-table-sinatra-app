@@ -1,5 +1,5 @@
-<h2>All Recipes!</h2>
-<!-- You will be able to view all by all bakers -->
+<p><h2>All Recipes!</h2></p>
+
 <ul>
   <% @recipes.each do |recipe| %>
     <li>
@@ -17,7 +17,7 @@
     <button type="submit">View Your Recipes</button>
 </form>
 <br>
-<form method="get" action="/categories/index">
+<form method="get" action="/categories">
     <button type="submit">View by Category</button>
 </form>
 <br>
