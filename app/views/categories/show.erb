@@ -1,7 +1,14 @@
 <p><h2>Recipes under <%= @category.name %>:</h2></p>
 
+<ul>
 <% @category.recipes.each do |recipe| %>
-
+  <li><a href="/recipes/<%= recipe.id %>"><%= recipe.name %></a></li>
 <% end %>
+</ul>
 
-<!-- List recipe links within category -->
+<br>
+<br>
+
+<form method="get" action="/categories">
+  <button type="submit">View Categories</button>
+</form>
