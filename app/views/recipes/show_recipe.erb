@@ -14,20 +14,25 @@
 <p>@<%= @recipe.baker.username %></p>
 
 <% if @recipe.baker == current_baker %>
-<form method="get" action="/recipes/<%= @recipe.id %>/edit">
-  <button type="submit">Edit Recipe</button>
-</form>
+  <form method="get" action="/recipes/<%= @recipe.id %>/edit">
+    <button type="submit">Edit Recipe</button>
+  </form>
 <br>
 <% end %>
 
 <% if @recipe.baker == current_baker %>
-<form action="/recipes/<%= @recipe.id %>/delete" method="POST">
-  <input id="hidden" type="hidden" name="_method" value="delete">
-  <p><input type="submit" value="Delete Recipe"></p>
-</form>
+  <form action="/recipes/<%= @recipe.id %>/delete" method="POST">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <p><input type="submit" value="Delete Recipe"></p>
+  </form>
 <% end %>
 
 <form method="get" action="/bakers/show_dashboard">
-  <button type="submit">Back To My Recipes</button>
+  <button type="submit">My Recipes</button>
+</form>
+<br>
+
+<form method="get" action="/recipes">
+  <button type="submit">All Recipes</button>
 </form>
 <br>
