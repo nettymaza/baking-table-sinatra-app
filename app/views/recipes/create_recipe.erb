@@ -1,3 +1,4 @@
+<br>
 <h2>Create Your Recipe:</h2>
 
 <form action="/recipes" method="POST">
@@ -11,7 +12,8 @@
   <p><input type="text" name="instructions" ></p>
   <br>
   <p><label>Choose Category:</label></p>
-  <select name="">
+
+  <select name="category_id">
     <% @categories.each do |category| %>
       <option value="<%= category.id %>"><%= category.name %></option>
     <% end %>
@@ -19,6 +21,10 @@
   <br>
   <br>
   <br>
-  <p><input type="submit" value="Create Recipe"></p>
+  <p><input type="submit" value="Save Recipe"></p>
 
+</form>
+
+<form method="get" action="/bakers/show_dashboard">
+    <button type="submit">My Recipes</button>
 </form>
