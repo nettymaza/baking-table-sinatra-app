@@ -1,7 +1,11 @@
 require 'pry'
 require 'awesome_print'
+require 'sinatra/base'
+require 'rack-flash'
 
 class RecipesController < ApplicationController
+  enable :sessions
+  use Rack::Flash
 
   # Recipe Index
   get "/recipes" do
@@ -33,6 +37,7 @@ class RecipesController < ApplicationController
         @recipe.category_id = params[:category_id]
         @recipe.save
 
+        flash[:message] = "Successfully Created Recipe!"
         redirect "/recipes/#{@recipe.id}"
       end
     end
@@ -59,6 +64,7 @@ class RecipesController < ApplicationController
       @recipe.category_id = params[:category_id]
       @recipe.save
 
+      flash[:message] = "Successfully Updated Recipe!"
       redirect "/recipes/#{@recipe.id}"
     end
   end
