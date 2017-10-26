@@ -41,6 +41,7 @@ class RecipesController < ApplicationController
   # Edit Recipe
   get '/recipes/:id/edit' do
     @recipe = Recipe.find_by_id(params[:id])
+    @categories = Category.all
     if @recipe.baker == current_baker
       erb :"/recipes/edit_recipe"
     else

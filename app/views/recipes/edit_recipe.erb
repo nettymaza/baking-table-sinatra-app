@@ -3,7 +3,6 @@
 <form action="/recipes/<%= @recipe.id %>" method="POST">
   <input id="hidden" type="hidden" name="_method" value="patch">
   <p>
-
     <p><label>Name:</label></p>
     <p><input type="text" name="name" value="<%= @recipe.name %>"></p>
     <br>
@@ -13,14 +12,20 @@
     <p><label>Instructions:</label></p>
     <p><input type="text" name="instructions" value="<%= @recipe.instructions %>" ></p>
     <br>
-
+    <p><label>Category:</label></p>
+    <select name="category_id">
+    <% @categories.each do |category| %>
+      <option value="<%= category.id %>"><%= category.name %></option>
+    <% end %>
+    </select>
+    <br>
+    <br>
+    <br>
     <input type="submit" value="Save">
   </p>
 
 </form>
 
 <form method="get" action="/bakers/show_dashboard">
-    <button type="submit">My Recipes</button>
+  <button type="submit">My Recipes</button>
 </form>
-
-<!-- #Still need to be able to edit Category. -->
