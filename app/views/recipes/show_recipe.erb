@@ -1,4 +1,4 @@
-<br>
+
 <h2><label>Recipe For:</label></h2>
 <p><%= @recipe.name %></p>
 
@@ -8,6 +8,12 @@
 <h2><label>Instructions:</label></h2>
 <p><%= @recipe.instructions %></p>
 
+<h2><label>Category</label></h2>
+<p><%= @recipe.category.name %></p>
+
+<h2><label>Created by:</label></h2>
+<p>@<%= @recipe.baker.username %></p>
+
 <% if @recipe.baker == current_baker %>
 <form method="get" action="/recipes/<%= @recipe.id %>/edit">
   <button type="submit">Edit Recipe</button>
@@ -15,10 +21,14 @@
 <br>
 <% end %>
 
+<% if @recipe.baker == current_baker %>
+<form action="/recipes/<%= @recipe.id %>/delete" method="POST">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <p><input type="submit" value="Delete Recipe"></p>
+</form>
+<% end %>
+
 <form method="get" action="/bakers/show_dashboard">
   <button type="submit">Back To My Recipes</button>
 </form>
 <br>
-
-<!-- Will add Category
-Will add Delete Button -->
