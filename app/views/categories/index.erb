@@ -1,5 +1,11 @@
 <h2>Categories:</h2>
+<p>
+  <% @categories.each do |category| %>
+    <li><a href="/categories/<%= category.id %>"> <%= category.name %> </a></li>
+  <% end %>
+</p>
 
-<% @categories.each do |category| %>
-  <li><a href="/categories/<%= category.id %>"> <%= category.name %> </a></li>
-<% end %>
+<br>
+<form method="get" action="/recipes">
+  <button type="submit">All Recipes</button>
+</form>
