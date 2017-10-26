@@ -71,6 +71,25 @@
     cursor: pointer;
   }
 
+  .header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+  }
+
+  .header .logo {
+    display: flex;
+  }
+
+  .header .logo img {
+    height: 60px;
+    margin-right: 20px;
+  }
+
+  .header .userInfo {
+
+  }
+
   .main {
     overflow: hidden;
   }

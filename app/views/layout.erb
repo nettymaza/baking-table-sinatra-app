@@ -16,15 +16,20 @@
 </head>
 <body>
   <div class="wrapper">
-    <h1>Baking Table</h1>
-
+    <div class="header">
+      <div class="logo">
+        <img src="/images/mixer.png" alt="">
+        <h1>Baking Table</h1>
+      </div>
+      <div class="userInfo">
+        <% if logged_in? %>
+        <i><h4>Logged in as @<%= current_baker.username %>!</h4></i>
+        <% end %>
+      </div>
+    </div>
       <%= yield %>
-
       <br>
 
-      <% if logged_in? %>
-        <i><h4>Logged in as @<%= current_baker.username %>!</h4></i>
-      <% end %>
 
     <footer class="branding">
       <small>&copy; 2017 <strong>BakingTable</strong></small>
