@@ -1,6 +1,10 @@
 require 'pry'
+require 'sinatra/base'
+require 'rack-flash'
 
 class BakersController < ApplicationController
+  enable :sessions
+  use Rack::Flash
 
   #SignUp
   get "/signup" do
@@ -13,10 +17,13 @@ class BakersController < ApplicationController
 
   post "/signup" do
     if params[:username] == "" || params[:email] == "" || params[:password] == ""
+
+      flash[:message] = "Error! All Fields are required, try again."
       redirect '/signup'
     else
       @baker = Baker.create(username: params[:username], email: params[:email], password: params[:password])
       session[:baker_id] = @baker.id
+
       redirect "/bakers/show_dashboard"
     end
   end
@@ -36,7 +43,8 @@ class BakersController < ApplicationController
       session[:baker_id] = baker.id
       redirect "/bakers/show_dashboard"
     else
-      redirect "/signup"
+      flash[:message] = "Error! invalid username or password, try again."
+      redirect "/login"
     end
   end
 
