@@ -16,15 +16,13 @@ class BakersController < ApplicationController
   end
 
   post "/signup" do
-    if params[:username] == "" || params[:email] == "" || params[:password] == ""
-
-      flash[:message] = "Error! All Fields are required, try again."
-      redirect '/signup'
-    else
-      @baker = Baker.create(username: params[:username], email: params[:email], password: params[:password])
+    @baker = Baker.new(username: params[:username], email: params[:email], password: params[:password])
+    if @baker.save
       session[:baker_id] = @baker.id
-
       redirect "/bakers/show_dashboard"
+    else
+      flash[:message] = @baker.errors.full_messages.to_sentence
+      erb :"/bakers/create_baker"
     end
   end
 
