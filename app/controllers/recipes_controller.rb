@@ -55,17 +55,35 @@ class RecipesController < ApplicationController
   end
 
   patch '/recipes/:id' do
-    @recipe = Recipe.find_by_id(params[:id])
-    if logged_in?
-      @recipe.name = params[:name]
-      @recipe.ingredients = params[:ingredients]
-      @recipe.instructions = params[:instructions]
-      @recipe.baker = current_baker
-      @recipe.category_id = params[:category_id]
-      @recipe.save
+    # steps :
+      # check if logged in
+        #  logged in steps :
+          # 1. FInd recipe
+          # 2. If recipe belongs to current baker
+            # baker owned recipe steps:
+              # 1. Update recipe
+              # 2. Set successful flash message
+              # 3. Redirect to recipe show page
+            # unwonwed recipe steps
+              # 1. Set error flash message
+              # 2. redirect to resipce index route
+        # logged out steps
+          # 1. Set error flash message
+          # 2. redirect to login route
 
-      flash[:message] = "Successfully Updated Recipe!"
-      redirect "/recipes/#{@recipe.id}"
+    if logged_in?
+      @recipe = Recipe.find_by_id(params[:id])
+      if @recipe.baker == curent.baker
+        @recipe.update(params[:recipe])
+        flash[:message] = "Successfully Updated Recipe!"
+        redirect "/recipes/#{@recipe.id}"
+      else
+        flash[:message] = "Sorry not your recipe!"
+        redirect "/recipes"
+      end
+    else
+      flash[:message] = "You're not logged in!"
+      redirect "/login"
     end
   end
 

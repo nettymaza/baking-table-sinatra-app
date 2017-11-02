@@ -4,16 +4,16 @@
   <input id="hidden" type="hidden" name="_method" value="patch">
   <p>
     <p><label>Name:</label></p>
-    <p><input type="text" name="name" value="<%= @recipe.name %>"></p>
+    <p><input type="text" name="recipe[name]" value="<%= @recipe.name %>"></p>
     <br>
     <p><label>Ingredients:</label></p>
-    <p><input type="text" name="ingredients" value="<%= @recipe.ingredients %>"></p>
+    <p><input type="text" name="recipe[ingredients]" value="<%= @recipe.ingredients %>"></p>
     <br>
     <p><label>Instructions:</label></p>
-    <p><input type="text" name="instructions" value="<%= @recipe.instructions %>" ></p>
+    <p><input type="text" name="recipe[instructions]" value="<%= @recipe.instructions %>" ></p>
     <br>
     <p><label>Category:</label></p>
-    <select name="category_id">
+    <select name="recipe[category_id]">
     <% @categories.each do |category| %>
       <option value="<%= category.id %>"><%= category.name %></option>
     <% end %>
